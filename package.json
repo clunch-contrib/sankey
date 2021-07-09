@@ -1,6 +1,6 @@
 {
   "name": "@clunch/sankey",
-  "version": "0.1.0-alpha.0",
+  "version": "0.1.0",
   "description": "桑基图，数据按照一定的规则呈现结构化的分布。 ",
   "main": "index.js",
   "scripts": {

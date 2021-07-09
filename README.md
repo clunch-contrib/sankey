@@ -1,7 +1,7 @@
 # sankey
 饼图组件，包括选中效果、文字说明等常见的饼图。
 
-<p align='center'><img width='400' src='./view.png'></p>
+<p align='center'><img src='./view.png'></p>
 
 <p>
   <a href="https://hai2007.gitee.io/npm-downloads?interval=7&packages=@clunch/sankey"><img src="https://img.shields.io/npm/dm/@clunch/sankey.svg" alt="downloads"></a>

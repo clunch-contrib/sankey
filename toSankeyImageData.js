@@ -1,7 +1,7 @@
 
 // 把数据变成容易绘制桑基图的格式
 
-export default function (data, width, height) {
+export default function (data, width, height, x, y) {
 
     // 每个结点的格式如下
     /**
@@ -23,7 +23,11 @@ export default function (data, width, height) {
      *  value:"",
      *
      *  // 位置和大小
-     *  left,top,width,height
+     *  left,top,width,height,
+     *
+     *  值位置
+     *  preTops:[],
+     *  nextTops:[]
      * }
      */
     var nodes = {}, i, j, link, disDeep;
@@ -33,7 +37,9 @@ export default function (data, width, height) {
             nexts: [],
             deep: 0,
             _sValue: 0,
-            _tValue: 0
+            _tValue: 0,
+            preTops: [],
+            nextTops: []
         };
     }
 
@@ -113,8 +119,18 @@ export default function (data, width, height) {
 
         nodes[i].width = _itemWidth;
         nodes[i].height = nodes[i].value / maxValue * height * 0.9;
-        nodes[i].left = _width * (nodes[i].deep + 1 / 3);
-        nodes[i].top = topPreDis[nodes[i].deep] + (_heightDis - nodes[i].height) * 0.5;
+        nodes[i].left = _width * (nodes[i].deep + 1 / 3) + x;
+        nodes[i].top = topPreDis[nodes[i].deep] + (_heightDis - nodes[i].height) * 0.5 + y;
+
+        nodes[i].preTops.push(nodes[i].top);
+        for (j = 0; j < nodes[i].pres.length; j++) {
+            nodes[i].preTops[j + 1] = nodes[i].preTops[j] + nodes[i].pres[j].value / nodes[i].value * nodes[i].height;
+        }
+
+        nodes[i].nextTops.push(nodes[i].top);
+        for (j = 0; j < nodes[i].nexts.length; j++) {
+            nodes[i].nextTops[j + 1] = nodes[i].nextTops[j] + nodes[i].nexts[j].value / nodes[i].value * nodes[i].height;
+        }
 
         topPreDis[nodes[i].deep] += _heightDis;
     }

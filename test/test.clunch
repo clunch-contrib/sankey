@@ -1,1 +1,1 @@
-<ui-sankey :data='data'/>
+<ui-sankey :data='data' x='10' y='30' :width='_width-200' :height='_height-60'/>
