@@ -10,10 +10,5 @@ window.clunch = new (Clunch.series('ui-sankey', sankey))({
             data: demoData
         };
     },
-    render: image,
-    methods: {
-        doit(target) {
-            console.log(target);
-        }
-    }
+    render: image
 });

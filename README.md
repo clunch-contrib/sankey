@@ -31,20 +31,23 @@ Clunch.series('ui-sankey',sankey);
 然后，你就可以使用这个组件了：
 
 ```html
-<ui-sankey data='Array' />
+<ui-sankey data='json' />
 ```
 
-- data:数据，应该是一个数组（比如：```  ```）
+- data:数据，应该是一个数组（比如：``` {nodes:[{name:""},...],links:[{source:"",target:"",value:""},...]} ```）
 
 除了上面的必输项外，还有下列可选项：
 
 |属性|类型|描述|默认值|可选值|
 |----|----|----|----|----|
+|x|number|图形左上角位置横坐标|0||
+|y|number|图形左上角位置纵坐标|0||
+|width|number|图形宽|画布的宽||
+|height|number|图形高|画布的高||
 
 由于此组件是基于[Clunch](https://github.com/hai2007/clunch)开发的，我们默认你已经掌握了相关知识。
 
 [<< 你可以点击此处学习Clunch.js如何使用](https://hai2007.gitee.io/clunch/#/course/introduce?fixed=top)
-
 
 开源协议
 ---------------------------------------
