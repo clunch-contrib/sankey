@@ -70,20 +70,22 @@ export default function (data, width, height, x, y) {
             disDeep = nodes[link.source].deep + 1 - nodes[link.target].deep;
 
             // 修改target的deep
-            // nodes[link.target].deep += disDeep;
+            nodes[link.target].deep += disDeep;
 
             // 然后对于target和其所有nexts同步提升deep
-            (function reCalcDeep(name) {
+            (function reCalcDeep(name, deep) {
 
-                nodes[name].deep += disDeep;
+                if (nodes[name].deep < deep) {
+                    nodes[name].deep = deep;
 
-                var _nexts = nodes[name].nexts, j;
+                    var _nexts = nodes[name].nexts, j;
 
-                for (j = 0; j < _nexts.length; j++) {
-                    reCalcDeep(_nexts[j].name);
+                    for (j = 0; j < _nexts.length; j++) {
+                        reCalcDeep(_nexts[j].name, nodes[name].deep + 1);
+                    }
                 }
 
-            })(link.target);
+            })(link.target, nodes[link.target].deep + 1);
 
         }
 
